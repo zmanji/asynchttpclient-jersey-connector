@@ -1,0 +1,29 @@
+plugins {
+    id 'java-library'
+    id 'idea'
+}
+
+def ahcVersion = "2.5.2"
+def jerseyVersion = "2.27"
+
+dependencies {
+    implementation "org.glassfish.jersey.core:jersey-client:${jerseyVersion}"
+    implementation "org.asynchttpclient:async-http-client:${ahcVersion}"
+
+    testImplementation 'junit:junit:4.12'
+    testImplementation "javax.xml.bind:jaxb-api:2.3.0"
+    testImplementation "org.glassfish.jersey.test-framework:jersey-test-framework-core:${jerseyVersion}"
+    testImplementation "org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-grizzly2:${jerseyVersion}"
+    testImplementation "org.glassfish.jersey.inject:jersey-hk2:${jerseyVersion}"
+    testImplementation "org.slf4j:slf4j-simple:1.7.25"
+}
+
+repositories {
+    mavenCentral()
+}
+
+compileJava {
+  options.compilerArgs << "-Werror"
+  sourceCompatibility = "1.8"
+}
+
